@@ -1,0 +1,17 @@
+version: '3.7'  # version of compose format 
+
+services:
+  easyocr:
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+    container_name: easyocr
+    image: easyocr
+    build:   # path is relative to docker-compose.yml localtion
+      context: ./easyocr_main
+    #volumes:
+     #  - /var/log/easyocr/img_dir:/easyocr_main/img_dir 
+    expose:
+       - 8989
+    ports:
+      - 8989:8989
